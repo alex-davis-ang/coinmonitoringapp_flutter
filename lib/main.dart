@@ -66,6 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
+          appBar: AppBar(  
+            title: Text('Scaffold Example'),  
+          ), 
           body: Row(
             children: [
               SafeArea(
@@ -206,3 +209,4 @@ class BigCard extends StatelessWidget {
     );
   }
 }
+
