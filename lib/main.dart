@@ -1,17 +1,35 @@
 // import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart:async';  
-// A simple function that simulates fetching data from a remote source  
-Future<String> fetchData() async {  
-  await Future.delayed(Duration(seconds: 20));  // Simulating network latency  
-  return 'Hello from FutureProvider!';  
+// import 'dart:async';  
+// A simple function that simulates fetching data from a remote source  class ApiService {  class ApiService {  
+
+class ApiService {  
+  void fetchData() {  
+    // Simulate an API call  
+    print("Fetching data from API...");  
+  }  
 }  
+
+class Repository {  
+  final ApiService apiService;  
+
+  Repository({required this.apiService});  
+
+  void getData() {  
+    apiService.fetchData();  
+  }  
+}
+
 void main() {  
   runApp(  
-    FutureProvider<String>(  
-      create: (context) => fetchData(),  
-      initialData: 'Loading...',  // Optional: Provide initial data while the future is being resolved  
+    MultiProvider(  
+      providers: [  
+        Provider<ApiService>(create: (_) => ApiService()),  
+        ProxyProvider<ApiService, Repository>(  
+          update: (context, apiService, repository) => Repository(apiService: apiService),  
+        ),  
+      ],  
       child: MyApp(),  
     ),  
   );  
@@ -21,28 +39,24 @@ class MyApp extends StatelessWidget {
   @override  
   Widget build(BuildContext context) {  
     return MaterialApp(  
-      title: 'FutureProvider Example',  
-      theme: ThemeData(  
-        primarySwatch: Colors.blue,  
-      ),  
-      home: MyHomePage(),  
+      home: HomePage(),  
     );  
   }  
 }  
 
-class MyHomePage extends StatelessWidget {  
+class HomePage extends StatelessWidget {  
   @override  
   Widget build(BuildContext context) {  
-    final futureData = Provider.of<String>(context);  
-    
+    final repository = Provider.of<Repository>(context, listen: false);  
+
     return Scaffold(  
-      appBar: AppBar(  
-        title: Text('FutureProvider Example'),  
-      ),  
+      appBar: AppBar(title: Text('ProxyProvider Example')),  
       body: Center(  
-        child: Text(  
-          futureData,  // Display the data provided by FutureProvider  
-          style: TextStyle(fontSize: 24),  
+        child: ElevatedButton(  
+          onPressed: () {  
+            repository.getData();  
+          },  
+          child: Text('Get Data'),  
         ),  
       ),  
     );  
