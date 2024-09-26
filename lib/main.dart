@@ -12,7 +12,7 @@ void main() {
         scaffoldBackgroundColor: Colors.black12,
         tabBarTheme: TabBarTheme(
           overlayColor:
-              MaterialStateColor.resolveWith((states) => Colors.black),
+              WidgetStateColor.resolveWith((states) => Colors.black),
         ),
       ),
       home: Home(),
