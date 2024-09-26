@@ -32,6 +32,7 @@ class _CoinsListState extends State<CoinsList>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: FutureBuilder(
         future: coinslist,

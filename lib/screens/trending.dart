@@ -33,6 +33,7 @@ class _TrendingState extends State<Trending>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);  
     return Scaffold(
       body: FutureBuilder(
         future: coins,

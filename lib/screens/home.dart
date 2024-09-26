@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
                 }));  
               },  
               icon: const Icon(  
-                Icons.search,  
+                Icons.wallet,  
                 color: Colors.white60,  
               ),  
             ),
@@ -77,7 +77,79 @@ class _HomeState extends State<Home> {
             ],  
           ),  
         ),  
+        bottomNavigationBar: BottomAppBar(
+          color: const Color.fromARGB(255, 7, 7, 7),    
+        child: Container(  
+          height: 50.0,  
+          decoration: BoxDecoration(  
+            color: const Color.fromARGB(255, 7, 7, 7),  
+            border: Border(top: BorderSide(color: Colors.grey, width: 0.5)),  
+          ),  
+          padding: EdgeInsets.symmetric(horizontal: 100.0),  
+          child: Row(  
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,  
+            children: [  
+              Container(  
+                padding: EdgeInsets.all(8.0), // Custom padding inside the container  
+                decoration: BoxDecoration(  
+                  color: const Color.fromARGB(255, 206, 208, 212), // Background color for the container  
+                  shape: BoxShape.circle, // Making the container circular  
+                ),  
+                child: Icon(  
+                  Icons.navigate_before,  
+                  color: const Color.fromARGB(255, 206, 208, 212), // Background color for the container  / Custom icon color  
+                ),  
+              ),  
+              SizedBox(width: 5),
+              Container(  
+                padding: EdgeInsets.all(8.0),  
+                decoration: BoxDecoration(  
+                  color: const Color.fromARGB(255, 206, 208, 212), // Background color for the container    
+                  borderRadius: BorderRadius.circular(8.0),  
+                ),  
+                child: Text(  
+                  '1',  
+                  style: TextStyle(  
+                    height: 1,
+                    color: Colors.white,  
+                    fontWeight: FontWeight.bold,  
+                    fontSize: 18.0,  
+                  ),  
+                ),  
+              ),  
+              SizedBox(width: 5),
+              Container(  
+                padding: EdgeInsets.all(8.0),  
+                decoration: BoxDecoration(  
+                  color: Colors.white,   
+                  borderRadius: BorderRadius.circular(8.0),  
+                ),  
+                child: Text(  
+                  '2',  
+                  style: TextStyle(  
+                    height: 1,
+                    color: Colors.white,  
+                    fontWeight: FontWeight.bold,  
+                    fontSize: 18.0,  
+                  ),  
+                ),  
+              ), 
+              Container(  
+                padding: EdgeInsets.all(8.0),  
+                decoration: BoxDecoration(  
+                  color: Colors.white,    
+                  shape: BoxShape.circle, // Making the container circular  
+                ),  
+                child: Icon(  
+                  Icons.navigate_next,  
+                  color: Colors.white, // Custom icon color  
+                ),  
+              ),  
+            ],  
+          ),  
+        ),
       ),  
+      )
     );  
   }  
 }

@@ -22,13 +22,14 @@ class HttpService {
         '&order=market_cap_desc&per_page=100&page=1&sparkline=true&locale=en';
     var response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
-      log("successful");
+      print("successful");
       final coins = jsonDecode(response.body) as List<dynamic>;
-      log(coins.length.toString());
+      print(coins.length.toString());
       final coinsData = coins.map((e) => Coin.fromJson(e)).toList();
-      log(coinsData.length.toString());
+      print(coinsData.length.toString());
       return coinsData;
     } else {
+      print("falied");
       throw ("An error occured");
     }
   }
@@ -36,8 +37,10 @@ class HttpService {
   static Future<TrendingCoins> getTrendingCoins() async {
     var response = await get(Uri.parse(trendingCoinsUrl));
     if (response.statusCode == 200) {
+      print(response.body);
       return TrendingCoins.fromJson(jsonDecode(response.body));
     } else {
+      print("failed");
       throw ("An error occured");
     }
   }

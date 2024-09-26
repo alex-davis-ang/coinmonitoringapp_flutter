@@ -64,6 +64,7 @@ class CoinDetail extends StatelessWidget {
                   gridLinelabel: ((gridLineValue) {
                     return gridLineValue.formatToMoney;
                   }),
+                  fillMode: FillMode.below,  
                   enableGridLines: true,
                   fallbackHeight: 45.h,
                   gridLineLabelPrecision: 7,
